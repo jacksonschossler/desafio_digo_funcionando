@@ -18,5 +18,18 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>common-domain</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>categoria-domain</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>usuario-domain</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
 	</dependencies>
 </project>
+ 
