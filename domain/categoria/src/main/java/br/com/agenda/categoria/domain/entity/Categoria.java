@@ -50,6 +50,9 @@ public class Categoria extends AbstractEntity implements Serializable
 	@Column(nullable = false)
 	private Tipo tipo;
 	
+	@Column
+	private boolean desativada;
+	
 	
 	
 	
