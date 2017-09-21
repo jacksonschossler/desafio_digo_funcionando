@@ -33,7 +33,7 @@ public interface ICategoriaResource {
 	
 	@GET
 	@Path("/{id}")
-	public Categoria findCategoriaById( @PathParam("id") long id);
+	public Categoria findCategoriaById( @PathParam("id") Long id);
 	
 	@POST
 	@Path("/insert")

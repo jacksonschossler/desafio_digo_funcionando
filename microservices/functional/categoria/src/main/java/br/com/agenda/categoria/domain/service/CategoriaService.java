@@ -42,7 +42,7 @@ public class CategoriaService implements ICategoriaResource{
 	
 	@Override
 	@Transactional(readOnly=true)
-	public Categoria findCategoriaById(long id) {
+	public Categoria findCategoriaById(Long id) {
 		final Categoria categoria = this.categoriaRepository.findOne(id);
 		Assert.notNull(categoria, MessageSourceHolder.getMessage("repository.notFoundById", id));
 		
