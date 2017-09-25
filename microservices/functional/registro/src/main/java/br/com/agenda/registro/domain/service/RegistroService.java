@@ -63,10 +63,10 @@ public class RegistroService implements IRegistroResource {
 	@Override
 	public Registro updateRegistro(Registro registro) {
 		Assert.notNull( registro.getId(), this.messageSource.getMessage( "registroId.null", null, LocaleContextHolder.getLocale() ) );
-		Assert.notNull( registro.getTipo(), this.messageSource.getMessage( "registroTipo.null", null, LocaleContextHolder.getLocale() ) );
-		Assert.notNull( registro.getCategoria(), this.messageSource.getMessage( "registroCategoria.null", null, LocaleContextHolder.getLocale() ) );
-		Assert.notNull( registro.getData(), this.messageSource.getMessage( "registroData.null", null, LocaleContextHolder.getLocale() ) );
-		Assert.notNull( registro.getValor(), this.messageSource.getMessage( "registroValor.null", null, LocaleContextHolder.getLocale() ) );
+		Assert.notNull( registro.getTipo(), this.messageSource.getMessage( "registro.tipoNull", null, LocaleContextHolder.getLocale() ) );
+		Assert.notNull( registro.getCategoria(), this.messageSource.getMessage( "registro.categoriaNull", null, LocaleContextHolder.getLocale() ) );
+		Assert.notNull( registro.getData(), this.messageSource.getMessage( "registro.dataNull", null, LocaleContextHolder.getLocale() ) );
+		Assert.notNull( registro.getValor(), this.messageSource.getMessage( "registro.valorNull", null, LocaleContextHolder.getLocale() ) );
 
 		Registro registroSaved = this.registroRepository.findOne(registro.getId());
 		

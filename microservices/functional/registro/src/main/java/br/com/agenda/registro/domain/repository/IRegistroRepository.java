@@ -12,8 +12,8 @@ public interface IRegistroRepository extends JpaRepository<Registro, Long> {
 	
 	@Query(value=" FROM Registro registro " + 
 			"WHERE ("
-			+ " ((:mes IS NULL) OR ( extract(month from registro.data = :mes)) ) "
-			+ " AND ((:ano IS NULL) OR (extract(year from registro.data = :ano)) ) "
+			+ " ((:mes IS NULL) OR ( month(registro.data) = :mes) )  "
+			+ " AND ((:ano IS NULL) OR (year(registro.data) = :ano))  "
 			+ ")"
 			)
 	public Page<Registro> listByFilters (   @Param("mes") Integer mes,

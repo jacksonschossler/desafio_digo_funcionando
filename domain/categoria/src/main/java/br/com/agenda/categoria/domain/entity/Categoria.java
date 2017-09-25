@@ -9,11 +9,15 @@ import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 
 import org.directwebremoting.annotations.DataTransferObject;
+import org.hibernate.annotations.Type;
 import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.Length;
 
+import com.vividsolutions.jts.util.Assert;
+
 import br.com.agenda.common.domain.entity.AbstractEntity;
 import lombok.Data;
+import lombok.Getter;
 import lombok.EqualsAndHashCode;
 
 @Data
@@ -51,7 +55,7 @@ public class Categoria extends AbstractEntity implements Serializable
 	private Tipo tipo;
 	
 	@Column
-	private boolean desativada;
+	private Boolean desativada;
 	
 	
 	
@@ -71,10 +75,17 @@ public class Categoria extends AbstractEntity implements Serializable
 		super();
 	}
 	
+	public Categoria(Long id)
+	{
+		super(id);
+	}
+	
 	
 	/*-------------------------------------------------------------------
 	 *							BEHAVIORS
 	 *-------------------------------------------------------------------*/
+	
+	
 	
 
 }

@@ -1,5 +1,7 @@
 package br.com.agenda.categoria.domain.service;
 
+import javax.validation.constraints.AssertFalse;
+
 import org.directwebremoting.annotations.RemoteProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -75,6 +77,7 @@ public class CategoriaService implements ICategoriaResource{
 		return categoria;
 	}
 	
+	
 	//removeCategoria(long):void
 	public void removeCategoria(Long id) {
 		Assert.notNull(id, MessageSourceHolder.getMessage("repository.notFoundidToRemove", id));
@@ -100,26 +103,44 @@ public class CategoriaService implements ICategoriaResource{
 		categoriaSaved.setTipo(categoria.getTipo());
 		categoriaSaved.setNome(categoria.getNome());
 		categoriaSaved.setDescricao(categoria.getDescricao());
+		categoriaSaved.setDesativada(categoria.getDesativada());
 
 		
 		return this.categoriaRepository.save( categoriaSaved );
 	}
 	
 	
-	//updateCategoriaToDesativada(Categoria):Categoria
-	public Categoria updateCategoriaToDesativada (Categoria categoria) {
-		Assert.notNull( categoria.getId(), this.messageSource.getMessage( "categoria.null", null, LocaleContextHolder.getLocale() ) );
-		categoria.setDesativada(true);
-		return this.categoriaRepository.save(categoria);
+//	//updateCategoriaToDesativada(Categoria):Categoria
+//	public Categoria updateCategoriaToDesativada (Categoria categoria) {
+//		Assert.notNull( categoria.getId(), this.messageSource.getMessage( "categoria.null", null, LocaleContextHolder.getLocale() ) );
+//		categoria.setDesativada(true);
+//		return this.categoriaRepository.save(categoria);
+//	}
+	
+	public Categoria updateCategoriaToDesativada (Long id) {
+		Assert.notNull( id , this.messageSource.getMessage( "categoria.null", null, LocaleContextHolder.getLocale() ) );
+		Categoria categoriaSaved = categoriaRepository.findOne(id);
+		Assert.isTrue(!categoriaSaved.getDesativada(),"a categoria já esta desativada");
+		categoriaSaved.setDesativada(true);
+		
+		return this.categoriaRepository.save(categoriaSaved);
 	}
 	
 	
 	//updateCategoriaToAtivada(Categoria):Categoria
 	
-	public Categoria updateCategoriaToAtivada (Categoria categoria) {
-		Assert.notNull( categoria.getId(), this.messageSource.getMessage( "categoria.null", null, LocaleContextHolder.getLocale() ) );
-		categoria.setDesativada(false);
-		return this.categoriaRepository.save(categoria);
+//	public Categoria updateCategoriaToAtivada (Categoria categoria) {
+//		Assert.notNull( categoria.getId(), this.messageSource.getMessage( "categoria.null", null, LocaleContextHolder.getLocale() ) );
+//		categoria.setDesativada(false);
+//		return this.categoriaRepository.save(categoria);
+//	}
+	
+	public Categoria updateCategoriaToAtivada (Long id) {
+		Assert.notNull( id, this.messageSource.getMessage( "categoria.null", null, LocaleContextHolder.getLocale() ) );
+		Categoria categoriaSaved = categoriaRepository.findOne(id);
+		Assert.isTrue(categoriaSaved.getDesativada(),"a categoria já esta ativada");
+		categoriaSaved.setDesativada(false);
+		return this.categoriaRepository.save(categoriaSaved);
 	}
 
 

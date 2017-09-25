@@ -60,13 +60,13 @@ public interface ICategoriaResource {
 	@POST
 	@Path("/updatedesativada")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Categoria updateCategoriaToDesativada(Categoria categoria);
+	public Categoria updateCategoriaToDesativada(Long id);
 	
 	
 	@POST
 	@Path("/updateativada")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Categoria updateCategoriaToAtivada(Categoria categoria);
+	public Categoria updateCategoriaToAtivada(Long id);
 
 	
 	
