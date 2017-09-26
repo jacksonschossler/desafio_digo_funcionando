@@ -34,12 +34,17 @@ public interface IRegistroResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Registro insertRegistro(Registro registro);
 	
+	@GET
+	@Path("/verifica/{id}")
+	public Boolean verificaCategoriaAssociada( @PathParam("id") Long id);
+	
 	//listCategoriaById VAI SER CHAMADO VIA REST
 	
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Page<Registro> listRegistroById( @QueryParam("mes") Integer mes,
 											@QueryParam("ano") Integer ano,
+											@QueryParam("categoria") Long categoria,
 											PageRequest pageRequest
 											);
 	

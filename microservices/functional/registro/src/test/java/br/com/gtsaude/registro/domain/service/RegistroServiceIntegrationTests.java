@@ -11,7 +11,6 @@ import br.com.agenda.categoria.domain.entity.Categoria;
 import br.com.agenda.registro.domain.entity.Registro;
 import br.com.agenda.registro.domain.service.RegistroService;
 import br.com.gtsaude.registro.domain.AbstractIntegrationTests;
-import scala.annotation.meta.setter;
 
 public class RegistroServiceIntegrationTests extends AbstractIntegrationTests {
 
@@ -29,12 +28,9 @@ public class RegistroServiceIntegrationTests extends AbstractIntegrationTests {
 		Registro registro = new Registro();
 		registro.setCategoria(new Categoria(20L));
 		registro.setData(LocalDateTime.now());
-		registro.setDescricao("BLABLABLA");
-		registro.setValor(15);
-		registroService.insertRegistro(registro);
-		Assert.notNull(registro, "não deu ");
-		
-		
+		registro.setDescricao("TESTETESTExxxxxxxx2");
+		registro.setValor(1576677);
+		registroService.insertRegistro(registro);		
 		
 	}
 	

@@ -14,11 +14,13 @@ public interface IRegistroRepository extends JpaRepository<Registro, Long> {
 			"WHERE ("
 			+ " ((:mes IS NULL) OR ( month(registro.data) = :mes) )  "
 			+ " AND ((:ano IS NULL) OR (year(registro.data) = :ano))  "
+			+ " AND ((:categoriaId IS NULL) OR (registro.categoria.id = :categoriaId)) "
 			+ ")"
 			)
 	public Page<Registro> listByFilters (   @Param("mes") Integer mes,
 											@Param("ano") Integer ano,
-											Pageable pageable );
+											@Param("categoriaId") Long categoriaId,
+											Pageable pageable );	
 	
 	
 }

@@ -31,7 +31,7 @@ public class CategoriaServiceIntegrationTests extends AbstractIntegrationTests {
 		assertNotNull(categoriaSaved);
 	}
 	
-	@Test(expected = ValidationException.class)
+	//@Test(expected = ValidationException.class)
 	public void insertCategoriaWithoutNomeMustFail() {
 		
 		Categoria categoria = new Categoria();
@@ -39,7 +39,7 @@ public class CategoriaServiceIntegrationTests extends AbstractIntegrationTests {
 		assertNotNull(categoriaSaved);
 	}
 	
-	@Test(expected = ValidationException.class)
+	//@Test(expected = ValidationException.class)
 	public void insertCategoriaWithoutTipoMustFail() {
 		
 		Categoria categoria = new Categoria();
@@ -49,17 +49,15 @@ public class CategoriaServiceIntegrationTests extends AbstractIntegrationTests {
 	}
 	
 	
-	@Test
+	//@Test
 	public void findCategoriaByIdMustPass() {
 		Categoria categoria = categoriaService.findCategoriaById(17L);
 		assertNotNull(categoria);
 		System.out.println("nome: " +  categoria.getNome() + "  , tipo: " + categoria.getTipo() );
 		
-		
-		
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	//@Test(expected = IllegalArgumentException.class)
 	public void findCategoriaByIdMustFail() {
 		Categoria categoria = categoriaService.findCategoriaById(39L);
 		assertNotNull(categoria);
@@ -69,7 +67,7 @@ public class CategoriaServiceIntegrationTests extends AbstractIntegrationTests {
 		
 	}
 	
-	@Test
+	//@Test
 	public void updateCategoriaMustPass() {
 		
 		Categoria categoria = categoriaService.findCategoriaById(17L);
@@ -78,20 +76,20 @@ public class CategoriaServiceIntegrationTests extends AbstractIntegrationTests {
 		
 	}
 	
-	@Test
+	//@Test
 	public void updateCategoriaToDesativadaMustPass() {
 		assertNotNull(categoriaService.updateCategoriaToDesativada(18L));
 		System.out.println("A CATEGORIA FOI DESATIVADA: ");
 	}
 	
 	
-	@Test(expected = IllegalArgumentException.class)
+	//@Test(expected = IllegalArgumentException.class)
 	public void updateCategoriaToDesativadaMustFail() {
 		assertNotNull(categoriaService.updateCategoriaToDesativada(19L));
 		System.out.println("A CATEGORIA FOI DESATIVADA: ");
 	}
 	
-	@Test
+	//@Test
 	public void updateCategoriaToAtivadaMustPass() {
 		assertNotNull(categoriaService.updateCategoriaToAtivada(20L));
 		System.out.println("A CATEGORIA FOI DESATIVADA: ");
@@ -99,7 +97,12 @@ public class CategoriaServiceIntegrationTests extends AbstractIntegrationTests {
 	
 	@Test
 	public void removeCategoriaMustPass() {
-		categoriaService.removeCategoria(21L);
+		categoriaService.removeCategoria(20L);
+	}
+	
+	//@Test(expected = nullPointerException.class)
+	public void removeCategoriaMustFail() {
+		categoriaService.removeCategoria(20L);
 	}
 	
 	

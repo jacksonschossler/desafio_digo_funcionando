@@ -6,6 +6,8 @@ import org.hibernate.annotations.Parameter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import org.directwebremoting.annotations.DataTransferObject;
 import org.hibernate.annotations.Type;
@@ -49,8 +51,9 @@ public class Registro extends AbstractEntity implements Serializable{
 	@Column
 	private Categoria categoria;
 	
-	@Type(type="transientEntity",parameters=@Parameter(name="entity",value="br.com.agenda.categoria.domain.entity.Tipo"))
+	//@Type(type="transientEntity",parameters=@Parameter(name="entity",value="br.com.agenda.categoria.domain.entity.Tipo"))
 	@Column
+	@Enumerated(EnumType.ORDINAL)
 	private Tipo tipo;
 	
 	

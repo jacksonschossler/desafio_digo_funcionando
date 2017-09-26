@@ -25,6 +25,7 @@
 			<artifactId>registro-domain</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
 
     	<!-- Others -->
 		<dependency>

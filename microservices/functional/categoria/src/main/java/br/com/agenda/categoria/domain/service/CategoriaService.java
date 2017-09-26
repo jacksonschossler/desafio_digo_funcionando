@@ -17,6 +17,9 @@ import br.com.agenda.categoria.application.restful.ICategoriaResource;
 import br.com.agenda.categoria.domain.entity.Categoria;
 import br.com.agenda.categoria.domain.repository.ICategoriaRepository;
 import br.com.agenda.common.application.i18n.MessageSourceHolder;
+import br.com.agenda.registro.application.restful.IRegistroResource;
+import br.com.agenda.categoria.domain.entity.Categoria;
+//import br.com.agenda.registro.application.restful.IRegistroResource;
 
 
 @Service
@@ -31,6 +34,9 @@ public class CategoriaService implements ICategoriaResource{
 
 	@Autowired
 	private ICategoriaRepository categoriaRepository;
+	
+	@Autowired
+	private IRegistroResource registroResource;
 	
 	@Autowired
 	private MessageSource messageSource;
@@ -80,12 +86,16 @@ public class CategoriaService implements ICategoriaResource{
 	
 	//removeCategoria(long):void
 	public void removeCategoria(Long id) {
-		Assert.notNull(id, MessageSourceHolder.getMessage("repository.notFoundidToRemove", id));
-		Categoria categoria = this.categoriaRepository.findOne(id);
+		Assert.notNull(id, "Não encontrou ID para remover");
+		if (!registroResource.verificaCategoriaAssociada(id)) {
+			Categoria categoria = this.categoriaRepository.findOne(id);
+			this.categoriaRepository.delete(categoria);
+		} 
+		//Assert.isTrue(!registroResource.verificaCategoriaAssociada(id), "Categoria associada a um registro, impossivel de remover!");
+//		if (registroResource.verificaCategoriaAssociada(id)) {
+//			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ENTROU NO IF");
+//		}
 		
-		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@--VERIFICAR SE CATEGORIA NÃO ESTÁ LIGADA A NENHUM REGISTRO
-		
-		this.categoriaRepository.delete(categoria);
 		
 	}
 	
