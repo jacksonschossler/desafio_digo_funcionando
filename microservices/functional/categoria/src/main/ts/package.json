@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.json",
-    "mavenbuild": "node node_modules/.bin/ng build -a categoria --base-href /categoria/"
+    "mavenbuild": "ng build -a categoria --base-href /categoria/"
   },
   "dependencies": {
     "@angular/animations": "4.3.6",
@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "4.3.6",
     "@angular/platform-server": "4.3.6",
     "@angular/router": "4.3.6",
-    "@covalent/core": "1.0.0-beta.6",
+    "@covalent/core": "1.0.0-beta.5-1",
     "@ngx-translate/core": "7.0.0",
     "@ngx-translate/http-loader": "0.1.0",
     "core-js": "^2.4.1",

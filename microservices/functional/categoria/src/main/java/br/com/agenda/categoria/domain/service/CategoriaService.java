@@ -15,6 +15,7 @@ import org.springframework.util.Assert;
 
 import br.com.agenda.categoria.application.restful.ICategoriaResource;
 import br.com.agenda.categoria.domain.entity.Categoria;
+import br.com.agenda.categoria.domain.entity.Tipo;
 import br.com.agenda.categoria.domain.repository.ICategoriaRepository;
 import br.com.agenda.common.application.i18n.MessageSourceHolder;
 import br.com.agenda.registro.application.restful.IRegistroResource;
@@ -58,19 +59,20 @@ public class CategoriaService implements ICategoriaResource{
 	}
 	
 	
-	public Page<Categoria> listCategoriaByFilters(Integer tipo, String nome, String descricao, 
-			Boolean desativada, PageRequest pageRequest)
-	{
-		return this.categoriaRepository.listByFilters(tipo, nome, descricao, desativada, pageRequest);
-		//return this.categoriaRepository.listByFilters(tipo, nome, descricao, pageable);
-	}
-	
-//	@Override
-//	public Page<Categoria> listCategoriaByFilters(Integer tipo, String nome, String descricao,
-//			Boolean desativada, Pageable pageable) {
-//		// TODO Auto-generated method stub
-//		return null;
+//	public Page<Categoria> listCategoriaByFilters(Tipo tipo, String nome, String descricao, 
+//			Boolean desativada, PageRequest pageRequest)
+//	{
+//		return this.categoriaRepository.listByFilters(tipo, nome, descricao, desativada, pageRequest);
+//		
+//		
 //	}
+	
+	public Page<Categoria> listCategoriaByFilters(String nome, PageRequest pageRequest)
+	{
+		return this.categoriaRepository.listByFilters(nome, pageRequest);
+		
+		
+	}
 	
 	
 	//insertCategoria(Categoria):Categoria]
@@ -152,6 +154,8 @@ public class CategoriaService implements ICategoriaResource{
 		categoriaSaved.setDesativada(false);
 		return this.categoriaRepository.save(categoriaSaved);
 	}
+
+
 
 
 	

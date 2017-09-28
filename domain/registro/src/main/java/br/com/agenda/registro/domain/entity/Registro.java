@@ -38,10 +38,10 @@ public class Registro extends AbstractEntity implements Serializable{
 	 *				 		     ATTRIBUTES
 	 *-------------------------------------------------------------------*/
 	
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private float valor;
 	
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private LocalDateTime data; 
 	
 	@Column(nullable=true)

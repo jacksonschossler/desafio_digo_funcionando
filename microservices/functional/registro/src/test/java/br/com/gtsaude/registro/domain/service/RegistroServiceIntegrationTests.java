@@ -1,5 +1,7 @@
 package br.com.gtsaude.registro.domain.service;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.time.LocalDateTime;
 
 import org.junit.Test;
@@ -34,9 +36,20 @@ public class RegistroServiceIntegrationTests extends AbstractIntegrationTests {
 		
 	}
 	
+	//@Test(expected = )
 	public void inserirRegistroMustFail() {
 		
+		Registro registro = new Registro();
+		Registro registroSaved = this.registroService.insertRegistro(registro);
+
+		assertNotNull(registroSaved);
 		
+		
+	}
+	
+	@Test
+	public void listRegistroByFiltersMustPass() {
+		registroService.listRegistroById(null, null, null, null);
 	}
 	
 	public void findRegistroByIdMustPass() {

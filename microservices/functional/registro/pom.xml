@@ -25,6 +25,11 @@
 			<artifactId>registro-domain</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>usuario-domain</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		
 
     	<!-- Others -->

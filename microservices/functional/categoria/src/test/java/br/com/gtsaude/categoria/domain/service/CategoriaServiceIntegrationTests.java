@@ -48,6 +48,10 @@ public class CategoriaServiceIntegrationTests extends AbstractIntegrationTests {
 		assertNotNull(categoriaSaved);
 	}
 	
+	//@Test
+	public void listCategoriaByFiltersMustPass() {
+		categoriaService.listCategoriaByFilters(null,null);
+	}
 	
 	//@Test
 	public void findCategoriaByIdMustPass() {
@@ -95,7 +99,7 @@ public class CategoriaServiceIntegrationTests extends AbstractIntegrationTests {
 		System.out.println("A CATEGORIA FOI DESATIVADA: ");
 	}
 	
-	@Test
+	//@Test
 	public void removeCategoriaMustPass() {
 		categoriaService.removeCategoria(20L);
 	}

@@ -7,6 +7,7 @@ const routes: Routes = [
 		redirectTo: '/',
 		pathMatch: 'full'
 	},
+	{path: '**', redirectTo: ''}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });

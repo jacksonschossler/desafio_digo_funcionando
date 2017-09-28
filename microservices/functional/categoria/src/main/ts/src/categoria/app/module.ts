@@ -1,7 +1,10 @@
+import {CategoriaView} from './views/categoria/categoria-view.component'
+import {TabelaView} from './views/tabela/tabela-view.component'
 //===============================ANGULAR MODULES=================================
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import {
   MdAutocompleteModule,
   MdButtonModule,
@@ -51,6 +54,7 @@ import {
 //===============================APP MODULES=====================================
 import { appRoutingProviders, RoutingModule } from './routing.module';
 import 'rxjs/add/observable/throw';
+//import {CategoriaView} from '';
 //==============================APP SERVICES=====================================
 //==============================APP COMPONENTS===================================
 
@@ -68,8 +72,11 @@ export function HttpLoaderFactory(http: Http) {
  */
 @NgModule({
   declarations: [
+    CategoriaView,
+    TabelaView
   ],
   imports: [
+    HttpModule,
     BrowserAnimationsModule,
     BrowserModule,
     CovalentLayoutModule,
@@ -116,14 +123,19 @@ export function HttpLoaderFactory(http: Http) {
     Md2DatepickerModule
   ],
   exports: [
-    BrowserModule
+    BrowserModule,
+    CategoriaView,
+    TabelaView
   ],
   providers: [
     appRoutingProviders,
     TdLayoutComponent,
     TdDialogService,
   ],
-  bootstrap: [],
+  bootstrap: [
+    CategoriaView,
+    TabelaView
+  ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ]

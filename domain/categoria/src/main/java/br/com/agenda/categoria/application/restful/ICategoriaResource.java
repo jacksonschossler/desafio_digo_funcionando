@@ -21,6 +21,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 
 import br.com.agenda.categoria.domain.entity.Categoria;
+import br.com.agenda.categoria.domain.entity.Tipo;
 
 
 @Component
@@ -40,14 +41,23 @@ public interface ICategoriaResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Categoria insertCategoria(Categoria categoria);
 	
+//	@GET
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public Page<Categoria> listCategoriaByFilters( @QueryParam("tipo") Tipo tipo,
+//													@QueryParam("nome") String nome,
+//													@QueryParam("descricao") String descricao,
+//													@QueryParam("desativada") Boolean desativada,
+//													PageRequest pageRequest			
+//													);
+	
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Page<Categoria> listCategoriaByFilters( @QueryParam("tipo") Integer tipo,
+	public Page<Categoria> listCategoriaByFilters(  //@QueryParam("tipo") Tipo tipo,
 													@QueryParam("nome") String nome,
-													@QueryParam("descricao") String descricao,
-													@QueryParam("desativada") Boolean desativada,
 													PageRequest pageRequest			
 													);
+	
+	
 	@DELETE
 	@Path("/id")
 	public void removeCategoria( @PathParam("id") Long id);
